@@ -127,8 +127,8 @@ async def guess(_, message: Message):
 
 @bot.on_message(filters.command('enable') & filters.group)
 async def enable(_, message):
-    await message.reply("Wordlebot remastered is enabled for this group.")
     game_state[message.chat.id] = None
+    await message.reply("Wordlebot remastered is enabled for this group.")
 
 
 @bot.on_message(filters.command('disable') & filters.group)
@@ -140,8 +140,8 @@ async def disable(_, message):
 @user.on_message(filters.user('hiwordlebot') & filters.group)
 async def auto_disable(_, message):
     if game_state[message.chat.id] is not DISABLED:
-        await bot.send_message(message.chat.id, "Wordlebot is detected. Disabling Wordlebot remastered.")
         game_state[message.chat.id] = DISABLED
+        await bot.send_message(message.chat.id, "Wordlebot is detected. Disabling Wordlebot remastered.")
 
 
 async def main():
