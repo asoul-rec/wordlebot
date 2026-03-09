@@ -76,8 +76,10 @@ with open('config.json') as f:
 
 game_state: dict[int, Wordle] = {}
 bot_config = config['bot']
-bot = Client(config['bot']['name'], config['api_id'], config['api_hash'], bot_token=config['bot']['token'])
-user = Client(config['user']['name'], config['api_id'], config['api_hash'], phone_number=config['user']['phone_number'])
+bot = Client(config['bot']['name'], config['api_id'], config['api_hash'],
+             bot_token=config['bot']['token'], in_memory=True)
+user = Client(config['user']['name'], config['api_id'], config['api_hash'],
+              phone_number=config['user']['phone_number'])
 
 
 @filters.create
